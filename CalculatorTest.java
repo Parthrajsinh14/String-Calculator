@@ -44,6 +44,12 @@ public void testNegativeNumberThrowsException() {
     calc.add("1,-2,3,-5");
 }
 
+@Test
+public void testIgnoreNumbersGreaterThan1000() {
+    Calculator calc = new Calculator();
+    assertEquals(2, calc.add("2,1001"));
+}
+
 
 
 } 
