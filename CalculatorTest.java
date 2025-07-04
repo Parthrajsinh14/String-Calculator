@@ -14,5 +14,11 @@ public void testSingleNumberReturnsValue() {
     assertEquals(5, calc.add("5"));
 }
 
+@Test
+public void testTwoNumbersCommaDelimited() {
+    Calculator calc = new Calculator();
+    assertEquals(8, calc.add("3,5"));
+}
+
 } 
  
