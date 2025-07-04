@@ -50,6 +50,11 @@ public void testIgnoreNumbersGreaterThan1000() {
     assertEquals(2, calc.add("2,1001"));
 }
 
+@Test
+public void testLongDelimiter() {
+    Calculator calc = new Calculator();
+    assertEquals(6, calc.add("//[***]\n1***2***3"));
+}
 
 
 } 
