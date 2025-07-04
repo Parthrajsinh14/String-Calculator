@@ -9,19 +9,17 @@ public class Calculator {
 
         String delimiter = ",|\n";
 
-        if (numbers.startsWith("//[")) {
-            List<String> delimiters = new ArrayList<>();
-            Matcher m = Pattern.compile("\\[(.*?)]").matcher(numbers);
-            int lastMatchEnd = 0;
-
-            while (m.find()) {
-                delimiters.add(Pattern.quote(m.group(1)));
-                lastMatchEnd = m.end();
-            }
-
-            delimiter = String.join("|", delimiters);
-            numbers = numbers.substring(lastMatchEnd + 1); // skip \n
-        } else if (numbers.startsWith("//")) {
+       if (numbers.startsWith("//[")) {
+    Matcher m = Pattern.compile("\\[(.*?)\\]").matcher(numbers);
+    List<String> delimiters = new ArrayList<>();
+    int lastIndex = 0;
+    while (m.find()) {
+        delimiters.add(Pattern.quote(m.group(1)));
+        lastIndex = m.end();
+    }
+    delimiter = String.join("|", delimiters);
+    numbers = numbers.substring(lastIndex + 1);
+} else if (numbers.startsWith("//")) {
             int delimiterEnd = numbers.indexOf("\n");
             delimiter = Pattern.quote(numbers.substring(2, delimiterEnd));
             numbers = numbers.substring(delimiterEnd + 1);
