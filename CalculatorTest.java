@@ -20,5 +20,12 @@ public void testTwoNumbersCommaDelimited() {
     assertEquals(8, calc.add("3,5"));
 }
 
+@Test
+public void testUnknownNumberOfNumbers() {
+    Calculator calc = new Calculator();
+    assertEquals(15, calc.add("1,2,3,4,5"));
+}
+
+
 } 
  
