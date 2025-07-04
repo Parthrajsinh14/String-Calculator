@@ -38,6 +38,12 @@ public void testCustomDelimiter() {
     assertEquals(3, calc.add("//;\n1;2"));
 }
 
+@Test(expected = IllegalArgumentException.class)
+public void testNegativeNumberThrowsException() {
+    Calculator calc = new Calculator();
+    calc.add("1,-2,3,-5");
+}
+
 
 
 } 

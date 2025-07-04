@@ -1,4 +1,5 @@
 import java.util.regex.Pattern;
+import java.util.*;
 
 public class Calculator {
     public int add(String numbers) {
@@ -16,11 +17,20 @@ public class Calculator {
 
         String[] parts = numbers.split(delimiter);
         int sum = 0;
+        List<Integer> negatives = new ArrayList<>();
 
         for (String part : parts) {
             if (!part.trim().isEmpty()) {
-                sum += Integer.parseInt(part.trim());
+                int num = Integer.parseInt(part.trim());
+                if (num < 0) {
+                    negatives.add(num);
+                }
+                sum += num;
             }
+        }
+
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("Negatives not allowed: " + negatives);
         }
 
         return sum;
